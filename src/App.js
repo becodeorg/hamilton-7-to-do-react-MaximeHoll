@@ -3,7 +3,7 @@ import './App.css';
 import InputField from "./input";
 import AddTodo from './button';
 import TodoList from './todoList';
-import TodoItem from "./todoItem";
+
 
 
 function App() {
@@ -12,14 +12,13 @@ function App() {
       <header className="App-header">
         <h1>My Todo App</h1>
       </header>
-      <body>
         <div>
           <InputField />
           <br></br>
           <AddTodo />
         </div>
-        <TodoList />
-      </body>
+          <TodoList />
+      
     </div>
   );
 }
