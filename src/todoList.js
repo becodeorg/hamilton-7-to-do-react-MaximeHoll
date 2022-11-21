@@ -2,9 +2,17 @@ import TodoItem from "./todoItem";
 import React, { useState } from "react";
 
 
-export default function TodoList() {
-    const initialTodos = [{name: "My first todo", key: 1, isComplete: false }, {name: "My second todo", key: 2, isComplete: false},];
+export default function TodoList({newItem}) {
+  console.log(newItem);
+  if(newItem) {
+    // let newInitialTodos = [...initialTodos];
+    // newInitialTodos.push({name: newItem, key: 3, isComplete: false});
+    // setTodos(newInitialTodos);
+    console.log("lol");
+  }
+    const initialTodos = [];
     const [todos, setTodos] = useState(initialTodos);
+    
     
 
    function completeTodo(id) {
@@ -35,3 +43,4 @@ export default function TodoList() {
       </ul>)
  }
 
+///lifting from todo

@@ -3,21 +3,23 @@ import './App.css';
 import InputField from "./input";
 import AddTodo from './button';
 import TodoList from './todoList';
+import Form from "./form";
+
+
 
 
 
 function App() {
+  const {render, newItem} = Form()
+  
   return (
     <div className="App">
       <header className="App-header">
         <h1>My Todo App</h1>
       </header>
-        <div>
-          <InputField />
-          <br></br>
-          <AddTodo />
-        </div>
-          <TodoList />
+          {render}
+
+          <TodoList {...newItem}/>
       
     </div>
   );
