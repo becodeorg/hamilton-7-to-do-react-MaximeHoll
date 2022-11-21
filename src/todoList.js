@@ -3,31 +3,33 @@ import React, { useState } from "react";
 
 
 export default function TodoList() {
-    const initialTodos = [{name: "My first todo", complete: false, key: 1 }, {name: "My second todo", complete: false, key: 2},];
+    const initialTodos = [{name: "My first todo", key: 1, isComplete: false }, {name: "My second todo", key: 2, isComplete: false},];
     const [todos, setTodos] = useState(initialTodos);
     
 
-    const handleChange = event => {
-        if (event.target.checked) {
-        console.log("checked")
-        console.log(this.complete)
-          
-        } else {
-            console.log("unchecked")
-            console.log(this.complete)
+   function completeTodo(id) {
+      let updatedTodos = todos.map(todo => {
+        if (todo.key === id) {
+          todo.isComplete = !todo.isComplete;
         }
-       
-      };
+        return todo;
+      });
+      setTodos(updatedTodos);
+      console.log(updatedTodos);
+      // localStorage.setItem("localTasks", JSON.stringify(updatedTodos))
+      
+    };
+
 
     return (<ul>
         {todos.map((todo) => (
-          <li key={todo.key}>
+          <li key={todo.key} className={todo.isComplete ? 'todo-row complete' : 'todo-row'}>
             <input type="checkbox" 
-            
-            onChange={handleChange}
-            defaultChecked={todo.complete}
+            id={todo.key}
+            onChange={() => completeTodo(todo.key)}
+            defaultChecked={todo.isComplete}
             /> 
-            {todo.name}
+            <label>{todo.name}</label> 
           </li>
         ))}
       </ul>)
