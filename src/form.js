@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
-export default function Form() {
+
+export default function Form({onAdd}) {
     const inputRef = useRef();
     const [newItem, setNewItem] = useState("");
     function clickHandler() {
@@ -10,13 +11,16 @@ export default function Form() {
         setNewItem(inputElement.value);
         return newItem;
       }
-    return {
-        newItem,
-        render: (<div>
+      function handleSubmit(e) {
+          e.preventDefault();
+          onAdd(newItem);
+      }
+    return (
+                <form onSubmit={handleSubmit}>
                 <input ref={inputRef} placeholder="Type a new todo..."></input>
                 <button onClick={clickHandler}>Add Todo</button>
-            </div>
-    )}
+                </form>
+    )
  }
 
 
