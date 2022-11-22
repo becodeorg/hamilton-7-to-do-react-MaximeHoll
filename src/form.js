@@ -9,7 +9,9 @@ export default function Form({onAdd}) {
        
         
         setNewItem(inputElement.value);
+        console.log(newItem);
         return newItem;
+        
       }
       function handleSubmit(e) {
           e.preventDefault();
